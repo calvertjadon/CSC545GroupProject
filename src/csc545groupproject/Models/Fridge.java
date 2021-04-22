@@ -5,7 +5,7 @@
  */
 package csc545groupproject.Models;
 
-import csc545groupproject.Controllers.DbManager;
+import csc545groupproject.Controllers.FridgeManager;
 import java.util.HashMap;
 
 /**
@@ -25,12 +25,12 @@ public class Fridge {
     
     public void update(Food food, int quantity) {
         contents.put(food, quantity);
-        DbManager.updateFridgeQuantity(food, quantity);
+        FridgeManager.updateFridgeQuantity(food, quantity);
     }
     
     public void remove(Food food) {
         contents.remove(food);
-        DbManager.deleteFoodFromDb(food);
+        FridgeManager.deleteFoodFromDb(food);
     }
     
     public int getQuantity(Food food) {

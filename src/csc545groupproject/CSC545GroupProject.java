@@ -5,7 +5,7 @@
  */
 package csc545groupproject;
 
-import csc545groupproject.Controllers.DbManager;
+import csc545groupproject.Controllers.FridgeManager;
 import csc545groupproject.Models.Food;
 import csc545groupproject.Models.Fridge;
 
@@ -22,12 +22,12 @@ public class CSC545GroupProject {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ArrayList<Food> foods = DbManager.getFoodsFromDb();
+        ArrayList<Food> foods = FridgeManager.getFoodsFromDb();
 //        foods.forEach((food) -> {
 //            System.out.println(food.getName());
 //        });
         
-        Fridge fridge = DbManager.getFridgeQuantitiesFromDb(foods);
+        Fridge fridge = FridgeManager.getFridgeQuantitiesFromDb(foods);
         fridge.printContents();
         System.out.println("");
         
@@ -38,7 +38,7 @@ public class CSC545GroupProject {
         
         Food apple = new Food("Apple", 1, 2, 3, 4, 5);
         if (fridge.add(apple, 0)) {
-            DbManager.addFoodToDb(apple);
+            FridgeManager.addFoodToDb(apple);
         } else {
             apple = fridge.get("Apple");
         }

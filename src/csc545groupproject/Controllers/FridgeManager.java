@@ -20,7 +20,7 @@ import oracle.jdbc.OracleResultSet;
  */
 
 //MARK - 
-public class DbManager {
+public class FridgeManager {
     
     //================================================================================
     // Food

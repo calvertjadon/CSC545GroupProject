@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package csc545groupproject;
+package csc545groupproject.Controllers;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -62,7 +60,7 @@ public class ConnectDb {
         return null;
     }
     
-    static void close(Connection conn) 
+    public static void close(Connection conn) 
     {
         if(conn != null) 
         {
@@ -75,7 +73,7 @@ public class ConnectDb {
         }
     }
 
-    static void close(OraclePreparedStatement st)
+    public static void close(OraclePreparedStatement st)
     {
         if(st != null)
         {
@@ -88,7 +86,7 @@ public class ConnectDb {
         }
     }
 
-    static void close(OracleResultSet rs)
+    public static void close(OracleResultSet rs)
     {
         if(rs != null)
         {

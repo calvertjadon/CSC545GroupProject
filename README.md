@@ -14,3 +14,13 @@ Contributors: Jadon Calvert and Katlyn Murphy
   * sid
   * port
 3. Run the project
+
+### Example `db.properties`
+
+```
+username=myUsername
+password=myPassword
+host=10.0.0.1
+port=1234
+sid=mySid
+```

@@ -35,13 +35,12 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
         this.dialog = dialog;
         
         nameTextField.setText(String.valueOf(food.getName()));
-        caloriesTextField.setText(String.valueOf(food.getCalories()));
-        proteinTextField.setText(String.valueOf(food.getProtein()));
-        sugarTextField.setText(String.valueOf(food.getSugar()));
-        sodiumTextField.setText(String.valueOf(food.getSodium()));
-        fatTextField.setText(String.valueOf(food.getFat()));
-        quantityTextField.setText(String.valueOf(quantity));
-        
+        caloriesInput.setValue(food.getCalories());
+        proteinInput.setValue(food.getProtein());
+        sugarInput.setValue(food.getSugar());
+        sodiumInput.setValue(food.getSodium());
+        fatInput.setValue(food.getFat());
+        quantityInput.setValue(quantity);
     }
     
     private void close() {
@@ -60,35 +59,29 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
 
         mainPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        sodiumTextField = new javax.swing.JTextField();
-        proteinTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        fatTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        sugarTextField = new javax.swing.JTextField();
-        quantityTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         nameTextField = new javax.swing.JTextField();
-        caloriesTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        caloriesInput = new javax.swing.JSpinner();
+        sugarInput = new javax.swing.JSpinner();
+        sodiumInput = new javax.swing.JSpinner();
+        proteinInput = new javax.swing.JSpinner();
+        fatInput = new javax.swing.JSpinner();
+        quantityInput = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel6.setText("Sodium");
 
-        sodiumTextField.setText("jTextField5");
-
-        proteinTextField.setText("jTextField3");
-
         jLabel8.setText("Quantity");
-
-        fatTextField.setText("jTextField6");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Modify Food");
@@ -99,16 +92,10 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Name");
 
-        sugarTextField.setText("jTextField4");
-
-        quantityTextField.setText("jTextField7");
-
         jLabel7.setText("Fat");
 
         nameTextField.setText("jTextField1");
         nameTextField.setEnabled(false);
-
-        caloriesTextField.setText("jTextField2");
 
         jLabel4.setText("Protein");
 
@@ -133,13 +120,31 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
             }
         });
 
+        caloriesInput.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        sugarInput.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        sodiumInput.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        proteinInput.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        fatInput.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        quantityInput.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(updateButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelButton))
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -151,23 +156,16 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(caloriesInput)
                             .addComponent(nameTextField)
-                            .addComponent(caloriesTextField)
-                            .addComponent(proteinTextField)
-                            .addComponent(sugarTextField)
-                            .addComponent(sodiumTextField)
-                            .addComponent(fatTextField)
-                            .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(updateButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(deleteButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(cancelButton)))
-                .addGap(11, 11, 11))
+                            .addComponent(sugarInput)
+                            .addComponent(proteinInput)
+                            .addComponent(fatInput, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(sodiumInput, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(quantityInput))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,27 +179,27 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(caloriesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(caloriesInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(proteinTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(proteinInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(sugarTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sugarInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(sodiumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sodiumInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(fatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fatInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quantityInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateButton)
@@ -217,7 +215,7 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,12 +231,12 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
         
-        int calories = Integer.parseInt(caloriesTextField.getText());
-        int protein = Integer.parseInt(proteinTextField.getText());
-        int sugar = Integer.parseInt(sugarTextField.getText());
-        int sodium = Integer.parseInt(sodiumTextField.getText());
-        int fat = Integer.parseInt(fatTextField.getText());
-        int quantity = Integer.parseInt(quantityTextField.getText());
+        int calories = (int) caloriesInput.getValue();
+        int protein = (int) proteinInput.getValue();
+        int sugar = (int) sugarInput.getValue();
+        int sodium = (int) sodiumInput.getValue();
+        int fat = (int) fatInput.getValue();
+        int quantity = (int) quantityInput.getValue();
         
         food.setCalories(calories);
         food.setProtein(protein);
@@ -303,10 +301,10 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField caloriesTextField;
+    private javax.swing.JSpinner caloriesInput;
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JTextField fatTextField;
+    private javax.swing.JSpinner fatInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -317,10 +315,10 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     public javax.swing.JPanel mainPanel;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField proteinTextField;
-    private javax.swing.JTextField quantityTextField;
-    private javax.swing.JTextField sodiumTextField;
-    private javax.swing.JTextField sugarTextField;
+    private javax.swing.JSpinner proteinInput;
+    private javax.swing.JSpinner quantityInput;
+    private javax.swing.JSpinner sodiumInput;
+    private javax.swing.JSpinner sugarInput;
     private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

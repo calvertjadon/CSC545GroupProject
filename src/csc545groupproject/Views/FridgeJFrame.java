@@ -5,7 +5,7 @@
  */
 package csc545groupproject.Views;
 
-import csc545groupproject.Controllers.DbManager;
+import csc545groupproject.Controllers.FridgeManager;
 import csc545groupproject.Models.Food;
 import csc545groupproject.Models.Fridge;
 import javax.swing.JDialog;
@@ -25,7 +25,7 @@ public class FridgeJFrame extends javax.swing.JFrame {
     public FridgeJFrame() {
         initComponents();
         
-        fridge = DbManager.getFridgeQuantitiesFromDb();
+        fridge = FridgeManager.getFridgeQuantitiesFromDb();
         populateTable();
     }
     

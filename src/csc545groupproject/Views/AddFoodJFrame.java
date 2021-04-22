@@ -5,7 +5,7 @@
  */
 package csc545groupproject.Views;
 
-import csc545groupproject.Controllers.DbManager;
+import csc545groupproject.Controllers.FridgeManager;
 import csc545groupproject.Models.Food;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -228,7 +228,7 @@ public class AddFoodJFrame extends javax.swing.JFrame {
         
         Food newFood = new Food(name, calories, protein, sugar, sodium, fat);
         
-        DbManager.addFoodToDb(newFood);
+        FridgeManager.addFoodToDb(newFood);
         fridgeJF.fridge.add(newFood, quantity);
         
         close();

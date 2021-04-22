@@ -5,7 +5,7 @@
  */
 package csc545groupproject.Views;
 
-import csc545groupproject.Controllers.DbManager;
+import csc545groupproject.Controllers.FridgeManager;
 import csc545groupproject.Models.Food;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -244,7 +244,7 @@ public class ModifyFoodJFrame extends javax.swing.JFrame {
         food.setSodium(sodium);
         food.setFat(fat);
         
-        DbManager.updateFoodInDb(food);
+        FridgeManager.updateFoodInDb(food);
         
         fridgeJF.fridge.update(food, quantity);
         

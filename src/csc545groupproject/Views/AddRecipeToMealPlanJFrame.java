@@ -20,6 +20,8 @@ public class AddRecipeToMealPlanJFrame extends javax.swing.JFrame {
 
     private ArrayList<Recipe> recipes;
     private MealPlan mealPlan;
+    private JFrame presenter;
+    private JDialog dialog;
     
     /**
      * Creates new form AddRecipeToMealPlanJFrame
@@ -32,6 +34,8 @@ public class AddRecipeToMealPlanJFrame extends javax.swing.JFrame {
         this();
         this.recipes = recipes;
         this.mealPlan = mealPlan;
+        this.presenter = presenter;
+        this.dialog = dialog;
         
         recipeNamesComboBox.removeAllItems();
         
@@ -111,7 +115,10 @@ public class AddRecipeToMealPlanJFrame extends javax.swing.JFrame {
         Recipe selectedRecipe = recipes.get(recipeIdx);
         
         MealPlanManager.addRecipeToMealPlan(selectedRecipe, mealPlan);
-        this.dispose();
+        
+        ((SearchMealPlanJFrame) this.presenter).populateMealList();
+        ((SearchMealPlanJFrame) this.presenter).populateRecipeList();
+        dialog.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
     /**

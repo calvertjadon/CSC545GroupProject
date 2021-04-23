@@ -177,6 +177,26 @@ public class MealPlanManager {
     }
     
     public static void addRecipeToMealPlan(Recipe recipe, MealPlan mealPlan) {
-        System.out.printf("added %s to %s %n", recipe.getName(), mealPlan.getName());
+        // insert into mealplanrecipe values (2, 1);
+        Connection conn = new ConnectDb().setupConnection();
+        OraclePreparedStatement pst = null;
+        OracleResultSet rs = null;
+        
+        try {
+            String sqlStatement = "insert into mealplanrecipe values (?, ?)";
+            
+            pst = (OraclePreparedStatement) conn.prepareStatement(sqlStatement);
+            pst.setInt(1, mealPlan.getId());
+            pst.setInt(2, recipe.getId());
+            
+            pst.executeUpdate();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            ConnectDb.close(conn);
+            ConnectDb.close(rs);
+            ConnectDb.close(pst);
+        }
     }
 }

@@ -5,7 +5,6 @@
  */
 package csc545groupproject.Controllers;
 
-import csc545groupproject.Models.MealPlan;
 import csc545groupproject.Models.Recipe;
 import java.sql.Connection;
 import java.util.ArrayList;

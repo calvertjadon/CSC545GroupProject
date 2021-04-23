@@ -8,7 +8,6 @@ package csc545groupproject.Views;
 import csc545groupproject.Controllers.FridgeManager;
 import csc545groupproject.Models.Food;
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 /**
  *

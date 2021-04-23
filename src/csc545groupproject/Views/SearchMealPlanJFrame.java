@@ -14,12 +14,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import javax.swing.JComboBox;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JDialog;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
-import javax.swing.JTable;
 import javax.swing.SpinnerDateModel;
 
 /**
@@ -367,12 +366,18 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
 
     private void addRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeButtonActionPerformed
         ArrayList<Recipe> allRecipes = RecipeManager.getRecipes();
+        ArrayList<Recipe> currentRecipes = mealRecipes;
+        
+        List<Integer> currentRecipeIds = currentRecipes.stream().map(Recipe::getId).collect(Collectors.toList());
+        ArrayList<Recipe> recipes = (ArrayList<Recipe>) allRecipes.stream().filter(r -> !currentRecipeIds.contains(r.getId())).collect(Collectors.toList());
+        
+        allRecipes.removeAll(currentRecipes);
         
         int mealPlanIdx = mealList.getSelectedIndex();
         MealPlan mealPlan = meals.get(mealPlanIdx);
                 
         JDialog frame = new JDialog(this, "Modify Food", true);
-        frame.getContentPane().add(new AddRecipeToMealPlanJFrame(frame, this, allRecipes, mealPlan).mainPanel);
+        frame.getContentPane().add(new AddRecipeToMealPlanJFrame(frame, this, recipes, mealPlan).mainPanel);
         frame.pack();
         frame.setVisible(true);
     }//GEN-LAST:event_addRecipeButtonActionPerformed

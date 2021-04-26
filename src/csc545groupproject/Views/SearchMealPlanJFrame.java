@@ -82,9 +82,12 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         meals = MealPlanManager.getMealsFromDb(selectedLocalDate);
         mealRecipes.clear();
         
-        int weekdayNum = selectedLocalDate.getDayOfWeek().getValue();
-        int monthNum = selectedLocalDate.getMonth().getValue();
+        int weekdayNum = selectedLocalDate.getDayOfWeek().getValue() - 1;
+        int monthNum = selectedLocalDate.getMonth().getValue() - 1;
         int dayOfMonth = selectedLocalDate.getDayOfMonth();
+        
+//        System.out.printf("weekdayNum: %s, monthNum: %s dayOfMonth: %s %n", weekdayNum, monthNum, dayOfMonth);
+        
         String weekday = dateManager.getWeekday(weekdayNum);
         String month = dateManager.getMonth(monthNum);
         
@@ -470,13 +473,13 @@ class DateManager {
     };
     private int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     private String[] weekdays = {
-        "Sunday",
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday"
+        "Saturday",
+        "Sunday"
     };
     
     int getNumDays(String month, int year) {

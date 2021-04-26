@@ -5,6 +5,8 @@
  */
 package csc545groupproject.Models;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Jadon
@@ -15,15 +17,23 @@ public class Recipe {
     private String name;
     private String category;
     private String instructions;
+    public HashMap ingredients;
+    
+    public Recipe(int id, String name, String category, String instructions, HashMap ingredients) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.instructions = instructions;
+        this.ingredients = ingredients;
+    }
     
     public Recipe(int id, String name, String category, String instructions) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.instructions = instructions;
+        this.ingredients = new HashMap();
     }
-    
-//    private Ingredient[] ingredients;
 
     /**
      * @return the id
@@ -80,18 +90,4 @@ public class Recipe {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    /**
-     * @return the ingredients
-     */
-//    public Ingredient[] getIngredients() {
-//        return ingredients;
-//    }
-//
-//    /**
-//     * @param ingredients the ingredients to set
-//     */
-//    public void setIngredients(Ingredient[] ingredients) {
-//        this.ingredients = ingredients;
-//    }
 }

@@ -388,7 +388,12 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
 
     private void addMealButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMealButtonActionPerformed
         // TODO add your handling code here:
-        String mealName = JOptionPane.showInputDialog(this, "Enter a meal name");
+        String mealName = JOptionPane.showInputDialog(
+                this,
+                "Enter a meal name",
+                "Add Meal",
+                JOptionPane.PLAIN_MESSAGE
+        );
         
         if (mealName != null && !mealName.equals("")) {
             Date selectedDate = (Date) dateSpinner.getValue();
@@ -415,6 +420,11 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         
         allRecipes.removeAll(currentRecipes);
         
+        if (recipes.size() == 0) {
+            JOptionPane.showMessageDialog(this, "There are no recipes available to add!");
+            return;
+        }
+        
         int mealPlanIdx = mealList.getSelectedIndex();
         
         MealPlan mealPlan;
@@ -425,7 +435,7 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
             return;
         }
                 
-        JDialog frame = new JDialog(this, "Modify Food", true);
+        JDialog frame = new JDialog(this, "Add Recipe to Meal Plan", true);
         frame.getContentPane().add(new AddRecipeToMealPlanJFrame(frame, this, recipes, mealPlan).mainPanel);
         frame.pack();
         frame.setVisible(true);

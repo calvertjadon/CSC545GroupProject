@@ -152,7 +152,7 @@ public class FridgeJFrame extends javax.swing.JFrame {
 
     private void addFoodButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFoodButtonActionPerformed
         // TODO add your handling code here:
-        JDialog frame = new JDialog(this, "Modify Food", true);
+        JDialog frame = new JDialog(this, "Add Food", true);
         frame.getContentPane().add(new AddFoodJFrame(frame, this).mainPanel);
         frame.pack();
         frame.setVisible(true);

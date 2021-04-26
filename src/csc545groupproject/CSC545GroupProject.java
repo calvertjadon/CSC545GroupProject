@@ -8,6 +8,7 @@ package csc545groupproject;
 import csc545groupproject.Controllers.FridgeManager;
 import csc545groupproject.Models.Food;
 import csc545groupproject.Models.Fridge;
+import csc545groupproject.Views.MainJFrame;
 
 import java.util.ArrayList;
 
@@ -22,30 +23,11 @@ public class CSC545GroupProject {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ArrayList<Food> foods = FridgeManager.getFoodsFromDb();
-//        foods.forEach((food) -> {
-//            System.out.println(food.getName());
-//        });
         
-        Fridge fridge = FridgeManager.getFridgeQuantitiesFromDb(foods);
-        fridge.printContents();
-        System.out.println("");
+        MainJFrame mainJF = new MainJFrame();
         
-        Food banana = fridge.get("Banana");
-        if (banana != null) {
-            fridge.remove(banana);
-        }
-        
-        Food apple = new Food("Apple", 1, 2, 3, 4, 5);
-        if (fridge.add(apple, 0)) {
-            FridgeManager.addFoodToDb(apple);
-        } else {
-            apple = fridge.get("Apple");
-        }
-        
-        fridge.update(apple, 5);
-        
-        fridge.printContents();
+        mainJF.setTitle("Recipe Manager");
+        mainJF.setVisible(true);
     }
     
 }

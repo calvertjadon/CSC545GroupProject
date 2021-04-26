@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jadon
  */
-public class FridgeJFrame extends javax.swing.JFrame {
+public final class FridgeJFrame extends javax.swing.JFrame {
 
     Fridge fridge;
     /**
@@ -186,10 +186,8 @@ public class FridgeJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FridgeJFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FridgeJFrame().setVisible(true);
         });
     }
 

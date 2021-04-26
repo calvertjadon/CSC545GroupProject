@@ -8,6 +8,7 @@ package csc545groupproject.Controllers;
 import csc545groupproject.Models.MealPlan;
 import csc545groupproject.Models.Recipe;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,7 +21,7 @@ import oracle.jdbc.OracleResultSet;
  */
 public class MealPlanManager {
     public static ArrayList<MealPlan> getMealsFromDb(LocalDate day) {
-        ArrayList<MealPlan> mealPlan = new ArrayList<MealPlan>();
+        ArrayList<MealPlan> mealPlan = new ArrayList<>();
         
         Connection conn = new ConnectDb().setupConnection();
         OraclePreparedStatement pst = null;
@@ -42,7 +43,7 @@ public class MealPlanManager {
                 mealPlan.add(meal);
             }
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);
@@ -54,7 +55,7 @@ public class MealPlanManager {
     }
     
     public static ArrayList<Recipe> getMealPlanRecipes(MealPlan mealPlan) {
-        ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+        ArrayList<Recipe> recipes = new ArrayList<>();
         
         Connection conn = new ConnectDb().setupConnection();
         OraclePreparedStatement pst = null;
@@ -78,7 +79,7 @@ public class MealPlanManager {
                 recipes.add(r);
             }
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);
@@ -103,7 +104,7 @@ public class MealPlanManager {
             
             pst.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);
@@ -125,7 +126,7 @@ public class MealPlanManager {
             
             pst.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);
@@ -165,7 +166,7 @@ public class MealPlanManager {
             
             return new MealPlan(id, name, day);
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);
@@ -191,7 +192,7 @@ public class MealPlanManager {
             
             pst.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);

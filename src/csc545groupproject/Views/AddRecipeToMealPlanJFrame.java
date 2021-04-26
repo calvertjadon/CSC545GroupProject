@@ -11,7 +11,6 @@ import csc545groupproject.Models.Recipe;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -150,10 +149,8 @@ public class AddRecipeToMealPlanJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddRecipeToMealPlanJFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AddRecipeToMealPlanJFrame().setVisible(true);
         });
     }
 

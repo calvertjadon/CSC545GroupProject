@@ -5,9 +5,11 @@
  */
 package csc545groupproject.Controllers;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 import oracle.jdbc.OraclePreparedStatement;
 import oracle.jdbc.OracleResultSet;
@@ -39,7 +41,7 @@ public class ConnectDb {
             // Connect to the Oracle database
             Connection conn = DriverManager.getConnection(jdbcUrl, username, password);
             return conn;
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         return null;
@@ -53,11 +55,9 @@ public class ConnectDb {
             
             props.load(inputStream);
             return props;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            return null;
         }
-        
-        return null;
     }
     
     public static void close(Connection conn) 
@@ -68,7 +68,7 @@ public class ConnectDb {
             {
                 conn.close();
             }
-            catch(Throwable whatever)
+            catch(SQLException whatever)
             {}
         }
     }
@@ -81,7 +81,7 @@ public class ConnectDb {
             {
                 st.close();
             }
-            catch(Throwable whatever)
+            catch(SQLException whatever)
             {}
         }
     }
@@ -94,7 +94,7 @@ public class ConnectDb {
             {
                 rs.close();
             }
-            catch(Throwable whatever)
+            catch(SQLException whatever)
             {}
         }
     }

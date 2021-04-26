@@ -29,8 +29,8 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
 
 //    MealPlanManager mealPlanManager;
     DateManager dateManager;
-    ArrayList<MealPlan> meals = new ArrayList<MealPlan>();
-    ArrayList<Recipe> mealRecipes = new ArrayList<Recipe>();
+    ArrayList<MealPlan> meals = new ArrayList<>();
+    ArrayList<Recipe> mealRecipes = new ArrayList<>();
     
     /**
      * Creates new form MealPlanJFrame
@@ -420,7 +420,7 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         
         allRecipes.removeAll(currentRecipes);
         
-        if (recipes.size() == 0) {
+        if (recipes.isEmpty()) {
             JOptionPane.showMessageDialog(this, "There are no recipes available to add!");
             return;
         }
@@ -470,10 +470,8 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SearchMealPlanJFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new SearchMealPlanJFrame().setVisible(true);
         });
     }
 
@@ -498,7 +496,7 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
 }
 
 class DateManager {
-    private String[] months = {
+    private final String[] months = {
         "January",
         "February",
         "March",
@@ -512,8 +510,8 @@ class DateManager {
         "November",
         "December"
     };
-    private int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    private String[] weekdays = {
+    private final int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    private final String[] weekdays = {
         "Monday",
         "Tuesday",
         "Wednesday",

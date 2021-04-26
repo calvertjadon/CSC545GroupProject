@@ -8,6 +8,7 @@ package csc545groupproject.Controllers;
 import csc545groupproject.Models.Food;
 import csc545groupproject.Models.Fridge;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -28,7 +29,7 @@ public class FridgeManager {
     //================================================================================
     
     public static ArrayList<Food> getFoodsFromDb() {
-        ArrayList<Food> foods = new ArrayList<Food>();
+        ArrayList<Food> foods = new ArrayList<>();
         
         Connection conn = new ConnectDb().setupConnection();
         OraclePreparedStatement pst = null;
@@ -52,7 +53,7 @@ public class FridgeManager {
                 foods.add(food);
             }
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);
@@ -91,7 +92,7 @@ public class FridgeManager {
             } else {
                 JOptionPane.showMessageDialog(null, String.format("A food with the name '%s' already exists!", food.getName()));
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }finally {
             ConnectDb.close(conn);
@@ -114,7 +115,7 @@ public class FridgeManager {
 
             pst.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);
@@ -141,7 +142,7 @@ public class FridgeManager {
 
             pst.executeUpdate();
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);
@@ -210,7 +211,7 @@ public class FridgeManager {
             pst.executeUpdate();
             
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);

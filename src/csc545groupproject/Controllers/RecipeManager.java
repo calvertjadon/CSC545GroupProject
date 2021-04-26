@@ -7,6 +7,7 @@ package csc545groupproject.Controllers;
 
 import csc545groupproject.Models.Recipe;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oracle.jdbc.OraclePreparedStatement;
@@ -18,7 +19,7 @@ import oracle.jdbc.OracleResultSet;
  */
 public class RecipeManager {
     public static ArrayList<Recipe> getRecipes() {
-        ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+        ArrayList<Recipe> recipes = new ArrayList<>();
         
         Connection conn = new ConnectDb().setupConnection();
         OraclePreparedStatement pst = null;
@@ -40,7 +41,7 @@ public class RecipeManager {
                 recipes.add(recipe);
             }
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         } finally {
             ConnectDb.close(conn);

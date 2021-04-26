@@ -8,6 +8,7 @@ package csc545groupproject.Controllers;
 import csc545groupproject.Models.Food;
 import csc545groupproject.Models.Fridge;
 import java.sql.Connection;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Optional;
 import javax.swing.JOptionPane;
@@ -62,7 +63,7 @@ public class FridgeManager {
         return foods;
     }
     
-    public static void addFoodToDb(Food food, int quantity) {
+    public static boolean addFoodToDb(Food food, int quantity) {
         Connection conn = new ConnectDb().setupConnection();
         OraclePreparedStatement pst = null;
         OracleResultSet rs = null;
@@ -81,15 +82,23 @@ public class FridgeManager {
             pst.executeUpdate();
             
             updateFridgeQuantity(food, quantity);
+            return true;
             
             
+        } catch (SQLIntegrityConstraintViolationException e) {
+            if (food.getName().equals("")) {
+                JOptionPane.showMessageDialog(null, "You must enter a valid food name!");
+            } else {
+                JOptionPane.showMessageDialog(null, String.format("A food with the name '%s' already exists!", food.getName()));
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        } finally {
+        }finally {
             ConnectDb.close(conn);
             ConnectDb.close(rs);
             ConnectDb.close(pst);
         }
+        return false;
     }
     
     public static void deleteFoodFromDb(Food food) {

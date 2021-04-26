@@ -340,8 +340,21 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         int mealPlanIdx = mealList.getSelectedIndex();
         int recipeIdx = recipesList.getSelectedIndex();
         
-        MealPlan mealPlan = meals.get(mealPlanIdx);
-        Recipe recipe = mealRecipes.get(recipeIdx);
+        MealPlan mealPlan;
+        Recipe recipe;
+        
+        try {
+            mealPlan = meals.get(mealPlanIdx);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No meal selected");
+            return;
+        }
+        try {
+            recipe = mealRecipes.get(recipeIdx);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No recipe selected");
+            return;
+        }
 
         if (JOptionPane.showConfirmDialog(this, String.format("Are you sure you remove to %s from %s?", recipe.getName(), mealPlan.getName())) == JOptionPane.YES_OPTION) {
             mealRecipes.remove(recipeIdx);
@@ -355,7 +368,14 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
     private void deleteMealButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMealButtonActionPerformed
         // TODO add your handling code here:
         int mealPlanIdx = mealList.getSelectedIndex();
-        MealPlan mealPlan = meals.get(mealPlanIdx);
+        MealPlan mealPlan;
+        
+        try {
+            mealPlan = meals.get(mealPlanIdx);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No meal selected");
+            return;
+        }
         
         if (JOptionPane.showConfirmDialog(this, String.format("Are you sure you delete %s?", mealPlan.getName())) == JOptionPane.YES_OPTION) {
             meals.remove(mealPlanIdx);
@@ -370,16 +390,20 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String mealName = JOptionPane.showInputDialog(this, "Enter a meal name");
         
-        Date selectedDate = (Date) dateSpinner.getValue();
-        LocalDate selectedLocalDate = selectedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        MealPlan mealPlan = MealPlanManager.createMealPlan(mealName, selectedLocalDate);
-        meals.add(mealPlan);
-        
-        mealRecipes.clear();
-        
-        populateMealList();
-        populateRecipeList();
+        if (mealName != null && !mealName.equals("")) {
+            Date selectedDate = (Date) dateSpinner.getValue();
+            LocalDate selectedLocalDate = selectedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+            MealPlan mealPlan = MealPlanManager.createMealPlan(mealName, selectedLocalDate);
+            meals.add(mealPlan);
+
+            mealRecipes.clear();
+
+            populateMealList();
+            populateRecipeList();
+        } else {
+            System.out.println("Invalid meal name");
+        }
     }//GEN-LAST:event_addMealButtonActionPerformed
 
     private void addRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeButtonActionPerformed
@@ -392,7 +416,14 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         allRecipes.removeAll(currentRecipes);
         
         int mealPlanIdx = mealList.getSelectedIndex();
-        MealPlan mealPlan = meals.get(mealPlanIdx);
+        
+        MealPlan mealPlan;
+        try {
+            mealPlan = meals.get(mealPlanIdx);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No meal plan selected");
+            return;
+        }
                 
         JDialog frame = new JDialog(this, "Modify Food", true);
         frame.getContentPane().add(new AddRecipeToMealPlanJFrame(frame, this, recipes, mealPlan).mainPanel);

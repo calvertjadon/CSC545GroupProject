@@ -227,7 +227,7 @@ public class AddFoodJFrame extends javax.swing.JFrame {
         
         Food newFood = new Food(name, calories, protein, sugar, sodium, fat);
         
-        FridgeManager.addFoodToDb(newFood);
+        FridgeManager.addFoodToDb(newFood, quantity);
         fridgeJF.fridge.add(newFood, quantity);
         
         close();

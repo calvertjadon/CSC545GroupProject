@@ -62,7 +62,7 @@ public class FridgeManager {
         return foods;
     }
     
-    public static void addFoodToDb(Food food) {
+    public static void addFoodToDb(Food food, int quantity) {
         Connection conn = new ConnectDb().setupConnection();
         OraclePreparedStatement pst = null;
         OracleResultSet rs = null;
@@ -79,6 +79,9 @@ public class FridgeManager {
             pst.setInt(6, food.getFat());
 
             pst.executeUpdate();
+            
+            updateFridgeQuantity(food, quantity);
+            
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

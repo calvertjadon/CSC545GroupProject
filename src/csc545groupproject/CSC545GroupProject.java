@@ -5,12 +5,7 @@
  */
 package csc545groupproject;
 
-import csc545groupproject.Controllers.FridgeManager;
-import csc545groupproject.Models.Food;
-import csc545groupproject.Models.Fridge;
 import csc545groupproject.Views.MainJFrame;
-
-import java.util.ArrayList;
 
 /**
  *

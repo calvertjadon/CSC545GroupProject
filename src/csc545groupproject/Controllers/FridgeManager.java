@@ -87,11 +87,7 @@ public class FridgeManager {
             
             
         } catch (SQLIntegrityConstraintViolationException e) {
-            if (food.getName().equals("")) {
-                JOptionPane.showMessageDialog(null, "You must enter a valid food name!");
-            } else {
-                JOptionPane.showMessageDialog(null, String.format("A food with the name '%s' already exists!", food.getName()));
-            }
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }finally {

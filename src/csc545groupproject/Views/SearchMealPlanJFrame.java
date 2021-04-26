@@ -41,10 +41,10 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
 //        mealPlanManager = new MealPlanManager();
         dateManager = new DateManager();
         
-        for(String month: dateManager.getMonths()) {
-            int days = dateManager.getNumDays(month, 2021);
-            System.out.printf("%s %s %n", month, days);
-        }
+//        for(String month: dateManager.getMonths()) {
+//            int days = dateManager.getNumDays(month, 2021);
+//            System.out.printf("%s %s %n", month, days);
+//        }
         
         SimpleDateFormat model = new SimpleDateFormat("dd-MM-yyyy");
         dateSpinner.setModel(new SpinnerDateModel());

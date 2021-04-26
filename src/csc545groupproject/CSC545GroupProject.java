@@ -6,6 +6,7 @@
 package csc545groupproject;
 
 import csc545groupproject.Views.MainJFrame;
+import javax.swing.UIManager;
 
 /**
  *
@@ -18,6 +19,12 @@ public class CSC545GroupProject {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch(Exception e) {
+            System.out.println("Using default LaF");
+        }
         
         MainJFrame mainJF = new MainJFrame();
         

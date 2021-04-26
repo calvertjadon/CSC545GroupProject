@@ -8,6 +8,7 @@ package csc545groupproject.Views;
 import csc545groupproject.Controllers.FridgeManager;
 import csc545groupproject.Models.Food;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -230,9 +231,14 @@ public class AddFoodJFrame extends javax.swing.JFrame {
         boolean success = FridgeManager.addFoodToDb(newFood, quantity);
         if (success) {
             fridgeJF.fridge.add(newFood, quantity);
+            close();
+        } else {
+            if (newFood.getName().equals("")) {
+                JOptionPane.showMessageDialog(null, "You must enter a valid food name!");
+            } else {
+                JOptionPane.showMessageDialog(null, String.format("A food with the name '%s' already exists!", newFood.getName()));
+            }
         }
-        
-        close();
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

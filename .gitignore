@@ -86,3 +86,4 @@ $RECYCLE.BIN/
 
 db.properties
 build/
+private.properties

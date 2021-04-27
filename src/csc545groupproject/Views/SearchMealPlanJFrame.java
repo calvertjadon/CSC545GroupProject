@@ -5,6 +5,7 @@
  */
 package csc545groupproject.Views;
 
+import csc545groupproject.Controllers.DateManager;
 import csc545groupproject.Controllers.MealPlanManager;
 import csc545groupproject.Controllers.RecipeManager;
 import csc545groupproject.Models.MealPlan;
@@ -28,7 +29,6 @@ import javax.swing.SpinnerDateModel;
 public class SearchMealPlanJFrame extends javax.swing.JFrame {
 
 //    MealPlanManager mealPlanManager;
-    DateManager dateManager;
     ArrayList<MealPlan> meals = new ArrayList<>();
     ArrayList<Recipe> mealRecipes = new ArrayList<>();
     
@@ -39,7 +39,6 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         initComponents();
         
 //        mealPlanManager = new MealPlanManager();
-        dateManager = new DateManager();
         
 //        for(String month: dateManager.getMonths()) {
 //            int days = dateManager.getNumDays(month, 2021);
@@ -49,6 +48,8 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         SimpleDateFormat model = new SimpleDateFormat("dd-MM-yyyy");
         dateSpinner.setModel(new SpinnerDateModel());
         dateSpinner.setEditor(new JSpinner.DateEditor(dateSpinner, model.toPattern()));
+        
+        showMealPlanButton.setVisible(false);
         
         getMealPlan();
     }
@@ -89,8 +90,8 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         
 //        System.out.printf("weekdayNum: %s, monthNum: %s dayOfMonth: %s %n", weekdayNum, monthNum, dayOfMonth);
         
-        String weekday = dateManager.getWeekday(weekdayNum);
-        String month = dateManager.getMonth(monthNum);
+        String weekday = DateManager.getWeekday(weekdayNum);
+        String month = DateManager.getMonth(monthNum);
         
         weekdayLabel.setText(String.format("%s, %s %s", weekday, month, dayOfMonth));
         populateMealList();
@@ -191,6 +192,11 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         });
 
         dateSpinner.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), null, null, java.util.Calendar.DAY_OF_WEEK));
+        dateSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                dateSpinnerStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -442,6 +448,11 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_addRecipeButtonActionPerformed
 
+    private void dateSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_dateSpinnerStateChanged
+        // TODO add your handling code here:
+        getMealPlan();
+    }//GEN-LAST:event_dateSpinnerStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -494,56 +505,4 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
     private javax.swing.JButton showMealPlanButton;
     private javax.swing.JLabel weekdayLabel;
     // End of variables declaration//GEN-END:variables
-}
-
-class DateManager {
-    private final String[] months = {
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-    };
-    private final int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    private final String[] weekdays = {
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-    };
-    
-    int getNumDays(String month, int year) {
-        for (int i = 0; i < months.length; i++) {
-            if (months[i].equals(month)) {
-                int numDays = days[i];
-                if (month.equals("February") && year % 4 == 0) {
-                    numDays += 1;
-                }
-                return numDays;
-            }
-        }
-        return -1;
-    }
-    
-    String getWeekday(int day) {
-        return weekdays[day];
-    }
-    
-    String[] getMonths() {
-        return months;
-    }
-    
-    String getMonth(int month) {
-        return months[month];
-    }
 }

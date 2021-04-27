@@ -216,6 +216,9 @@
                   <SpinnerModel initial="now" stepSize="7" type="date"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="dateSpinnerStateChanged"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -84,7 +84,7 @@ public class Recipe {
     }
 
     public void setIngredients(HashMap recipeIngredients) {
-        this.ingredients = ingredients;
+        this.ingredients = recipeIngredients;
     }
 
     public void add(Food food, int quantity) {

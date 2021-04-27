@@ -61,6 +61,8 @@ public class RecipeManager {
         OraclePreparedStatement pst = null;
         OracleResultSet rs = null;
         
+        System.out.println(recipe.ingredients.toString());
+        
         try {
             // ADD RECIPE TO DB
             String sqlStatement = "UPDATE Recipe SET name=?, category=?, instructions=? WHERE id=?";

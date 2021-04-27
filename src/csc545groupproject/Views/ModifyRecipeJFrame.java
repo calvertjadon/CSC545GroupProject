@@ -44,8 +44,8 @@ public class ModifyRecipeJFrame extends javax.swing.JFrame {
         this.nameTextField.setText(recipe.getName());
         this.categoryTextField.setText(recipe.getCategory());
         
-        this.ingredients = recipe.ingredients;
         instructions = Stream.of(recipe.getInstructions().split("\\. ")).collect(Collectors.toCollection(ArrayList::new));
+        this.ingredients = (HashMap) recipe.ingredients.clone();
         
         populateIngredientsList();
         populateInstructionsList();
@@ -373,7 +373,7 @@ public class ModifyRecipeJFrame extends javax.swing.JFrame {
             return;
         }
         
-        if (ingredients.size() == 0) {
+        if (this.ingredients.size() == 0) {
             JOptionPane.showMessageDialog(null, "Ingredients cannot be left blank!");
             return;
         }
@@ -386,7 +386,7 @@ public class ModifyRecipeJFrame extends javax.swing.JFrame {
         recipe.setName(recipeName);
         recipe.setCategory(category);
         recipe.setInstructions(instructionsString);
-        recipe.setIngredients(ingredients);
+        recipe.setIngredients(this.ingredients);
 
         boolean success = RecipeManager.updateRecipeInDb(recipe);
         if (success) {
@@ -419,14 +419,12 @@ public class ModifyRecipeJFrame extends javax.swing.JFrame {
 
     private void removeFoodFromRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFoodFromRecipeButtonActionPerformed
         // TODO add your handling code here:
-        String selectedFoodName = (String) foodNamesComboBox.getSelectedItem().toString();
-        Integer selectedQuantity = Integer.parseInt(quantityComboBox.getSelectedItem().toString());
-        
         int selectedIndex = ingredientsList.getSelectedIndex();
-        
         if (selectedIndex == -1) return;
 
-        ingredients.remove(selectedFoodName);
+        String selectedRecipeName = (String) ingredients.keySet().toArray()[selectedIndex];
+        
+        ingredients.remove(selectedRecipeName);
         populateIngredientsList();
     }//GEN-LAST:event_removeFoodFromRecipeButtonActionPerformed
 

@@ -21,11 +21,13 @@ public class MainJFrame extends javax.swing.JFrame {
         FridgeJFrame fridgeJF = new FridgeJFrame();
         SearchMealPlanJFrame smpJF = new SearchMealPlanJFrame();
         ShoppingListJFrame slJF = new ShoppingListJFrame();
+        AccessRecipesJFrame arJF = new AccessRecipesJFrame();
         
         // add frames to tabbed panel
         jTabbedPane1.add("Fridge", fridgeJF.mainPanel);
         jTabbedPane1.add("Meal Plan", smpJF.mainPanel);
         jTabbedPane1.add("Shopping List", slJF.mainPanel);
+        jTabbedPane1.add("Recipes", arJF.mainPanel);
     }
 
     /**

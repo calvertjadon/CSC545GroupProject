@@ -90,4 +90,8 @@ public class Recipe {
     public void add(Food food, int quantity) {
         this.ingredients.put(food, quantity);
     }
+
+    public HashMap getIngredients() {
+        return this.ingredients;
+    }
 }

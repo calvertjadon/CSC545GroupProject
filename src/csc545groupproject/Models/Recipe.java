@@ -26,14 +26,6 @@ public class Recipe {
         this.instructions = instructions;
         this.ingredients = ingredients;
     }
-    
-    public Recipe(int id, String name, String category, String instructions) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.instructions = instructions;
-        this.ingredients = new HashMap();
-    }
 
     /**
      * @return the id
@@ -89,5 +81,13 @@ public class Recipe {
      */
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public void setIngredients(HashMap recipeIngredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void add(Food food, int quantity) {
+        this.ingredients.put(food, quantity);
     }
 }

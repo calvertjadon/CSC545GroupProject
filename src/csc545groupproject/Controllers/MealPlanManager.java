@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import oracle.jdbc.OraclePreparedStatement;
 import oracle.jdbc.OracleResultSet;
@@ -75,7 +76,10 @@ public class MealPlanManager {
                 String category = rs.getString("category");
                 String instructions = rs.getString("instructions");
                 
-                Recipe r = new Recipe(id, name, category, instructions);
+                HashMap ingredients = RecipeManager.getRecipeIngredientsFromDb(id);
+                System.out.printf("%s %s %n", name, ingredients.toString());
+                
+                Recipe r = new Recipe(id, name, category, instructions, ingredients);
                 recipes.add(r);
             }
             

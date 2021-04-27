@@ -70,6 +70,7 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
         String[] recipeNames = new String[numRows];
         for (int i = 0; i < numRows; i++) {
             recipeNames[i] = mealRecipes.get(i).getName();
+//            System.out.println(mealRecipes.get(i).ingredients.toString());
         }
         
         recipesList.setListData(recipeNames);
@@ -412,7 +413,7 @@ public class SearchMealPlanJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addMealButtonActionPerformed
 
     private void addRecipeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRecipeButtonActionPerformed
-        ArrayList<Recipe> allRecipes = RecipeManager.getRecipes();
+        ArrayList<Recipe> allRecipes = RecipeManager.getRecipesFromDb();
         ArrayList<Recipe> currentRecipes = mealRecipes;
         
         List<Integer> currentRecipeIds = currentRecipes.stream().map(Recipe::getId).collect(Collectors.toList());

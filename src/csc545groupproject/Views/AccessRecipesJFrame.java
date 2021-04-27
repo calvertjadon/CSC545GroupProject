@@ -70,13 +70,6 @@ public class AccessRecipesJFrame extends javax.swing.JFrame {
             recipeTable.setValueAt(recipeCategory, i, 2);
             recipeTable.setValueAt(ingredients.toString(), i, 3);
         }
-        
-        //System.out.println(recipes);
-        
-        if (recipes.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "There are no recipes available to add!");
-            return;
-        }
     }
     
     /**
@@ -318,6 +311,10 @@ public class AccessRecipesJFrame extends javax.swing.JFrame {
         String query = searchRecipeTextField.getText();
         recipes = RecipeManager.searchRecipesByNameAndCategory(query);
 
+        if (recipes.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Search returned no results!");
+        }
+        
         System.out.println(recipes.toString());
 
         populateTable(false);
